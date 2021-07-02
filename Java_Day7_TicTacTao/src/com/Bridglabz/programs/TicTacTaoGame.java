@@ -5,15 +5,19 @@ import java.util.Scanner;
 public class TicTacTaoGame {
 	Scanner scanner;
 	static char[] board = new char[10];
-	boolean empty = true;
-	static String playername, computername, playersign, compsign;
-
+	static char playername, computername, playersign, compsign;
+	
+	void addElementInBoard() {
+		for(int i=0; i<10; i++) {
+			board[i] = '.';
+		}
+	}
 	public TicTacTaoGame() {
 		scanner = new Scanner(System.in);
 	}
 	
-	public String getCharValue() {
-		return scanner.next();
+	public char getCharValue() {
+		return scanner.next().charAt(0);
 	}
 	
 	public void getSigntoPlay() {
@@ -23,14 +27,14 @@ public class TicTacTaoGame {
 			System.out.println("Select the Sign to play");
 			System.out.println("1. x");
 			System.out.println("2. O");
-			String choice = getCharValue() ;
-			if(choice == "1" || choice == "x") {
-				playersign = "X";
-				compsign = "O";
+			char choice = getCharValue() ;
+			if(choice == '1' || choice == 'x') {
+				playersign = 'X';
+				compsign = 'O';
 			}
-			else if(choice == "2" || choice == "o") {
-				playersign = "O";
-				compsign = "x";
+			else if(choice == '2' || choice == 'o') {
+				playersign = 'O';
+				compsign = 'x';
 			}
 			else {
 				sign = true;
@@ -39,15 +43,28 @@ public class TicTacTaoGame {
 		}while(sign);
 	}
 	
-	public void displayBoard() {
-		System.out.println("\n");
-		if(empty) {
+	public void showBoard() {
+		System.out.println("");
 			for(int i=1; i<10; i++) {
-				System.out.print("  .  ");
+				System.out.print(" "+board[i]+" ");
 				if(i % 3 == 0)
 					System.out.println("\n");
 			}
-			
-		}
 	}
+	
+	public void makeMove() {
+		
+		boolean flag = false;
+		do {
+			System.out.print("Enter the index from 1 to 9 to make move: ");
+			int move = scanner.nextInt();
+			if(board[move] == '.')
+				board[move] = playersign;
+			else {
+				System.out.println("This index is full try another");
+				flag = true;
+			}
+		}while(flag);
+	}
+	
 }
