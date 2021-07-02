@@ -1,11 +1,14 @@
 package com.Bridglabz.programs;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacTaoGame {
 	Scanner scanner;
 	static char[] board = new char[10];
-	static char playername, computername, playersign, compsign;
+	String playername;
+	String computername;
+	static char playersign, compsign;
 	
 	void addElementInBoard() {
 		for(int i=0; i<10; i++) {
@@ -67,4 +70,46 @@ public class TicTacTaoGame {
 		}while(flag);
 	}
 	
+	public void getTheToss() {
+		boolean select = true;
+		do {
+			System.out.println("Select Heads or Tails");
+			System.out.println("1. heads");
+			System.out.println("2. tails");
+			char choice = getCharValue() ;
+			if(choice == '1' || choice == '2')
+			{
+				Random random = new Random();
+				int toss = random.nextInt(2);
+				select = false;
+				if(toss == 0 && choice == '1') {
+					System.out.println(playername+" Wins the toss");
+					System.out.println(playername+" will make 1st move ");
+				}
+				else if(toss == 1 && choice == '2') {	
+					System.out.println(playername+" Wins the toss");
+					System.out.println(playername+" will make 1st move ");
+				}
+				else {
+					System.out.println(computername+" Wins the toss");
+					System.out.println(computername+" will make 1st move ");
+				}
+			}
+			else {
+				System.out.println("Invalid Selection");
+			}
+		}while(select);
+	}
+	
+	public void getPlayers() {
+		System.out.print("Enter Your name : ");
+		playername = scanner.next() ;
+		System.out.print("Enter Rivel name : ");
+		computername = scanner.next() ;
+	}
+	public void start() {
+		System.out.println("******** "+playername+" V/S "+computername+" ********");
+		System.out.print(playername+" = "+playersign+"   ");
+		System.out.print(computername+" = "+compsign);
+	}
 }

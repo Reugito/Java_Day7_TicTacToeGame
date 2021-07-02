@@ -6,9 +6,11 @@ public class TicTacTaoMain {
 
 		TicTacTaoGame game = new TicTacTaoGame();
 		game.addElementInBoard();
+		game.getPlayers();
+		game.getTheToss();
 		game.getSigntoPlay();
+		game.start();
 		game.showBoard();
-		game.makeMove();
 		game.makeMove();
 		game.showBoard();
 
