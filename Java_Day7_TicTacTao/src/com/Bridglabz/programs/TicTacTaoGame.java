@@ -38,4 +38,16 @@ public class TicTacTaoGame {
 			}
 		}while(sign);
 	}
+	
+	public void displayBoard() {
+		System.out.println("\n");
+		if(empty) {
+			for(int i=1; i<10; i++) {
+				System.out.print("  .  ");
+				if(i % 3 == 0)
+					System.out.println("\n");
+			}
+			
+		}
+	}
 }
